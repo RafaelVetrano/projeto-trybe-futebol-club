@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bashh
 
 printf "\n> Instalando o front-end\n"
 frontFolder="./app/frontend"
