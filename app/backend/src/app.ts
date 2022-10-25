@@ -1,4 +1,6 @@
 import * as express from 'express';
+import bodyParser = require('body-parser');
+import loginRoute from './Routes/loginRouter';
 
 class App {
   public app: express.Express;
@@ -6,10 +8,14 @@ class App {
   constructor() {
     this.app = express();
 
+    this.app.use(bodyParser.json());
+
     this.config();
 
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
+
+    this.app.use('/login', loginRoute);
   }
 
   private config():void {
