@@ -2,42 +2,31 @@ import * as sinon from 'sinon';
 import * as chai from 'chai';
 // @ts-ignore
 import chaiHttp = require('chai-http');
-
 import { app } from '../app';
 import Example from '../database/models/ExampleModel';
 
 import { Response } from 'superagent';
+import { fakeLogin, trueLogin } from './mock';
 
 chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Seu teste', () => {
-  /**
-   * Exemplo do uso de stubs com tipos
-   */
+describe('testes de cobertura backend', () => {
 
-  // let chaiHttpResponse: Response;
+  it('deve retornar "status 400" se o login for invalido',
+  async () => {
+    const resp = await chai.request(app).post('/login').send(fakeLogin);
+    expect(resp.status).to.equal(400);
+  }
+  );
 
-  // before(async () => {
-  //   sinon
-  //     .stub(Example, "findOne")
-  //     .resolves({
-  //       ...<Seu mock>
-  //     } as Example);
-  // });
-
-  // after(()=>{
-  //   (Example.findOne as sinon.SinonStub).restore();
-  // })
-
-  // it('...', async () => {
-  //   chaiHttpResponse = await chai
-  //      .request(app)
-  //      ...
-
-  //   expect(...)
-  // });
+  it('deve retornar "status 200" se o login for valido',
+  async () => {
+    const resp = await chai.request(app).post('/login').send(trueLogin);
+    expect(resp.status).to.equal(200);
+  }
+  )
 
   it('Seu sub-teste', () => {
     expect(false).to.be.eq(true);
