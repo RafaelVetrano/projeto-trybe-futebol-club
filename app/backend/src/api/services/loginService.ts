@@ -1,4 +1,4 @@
-// import { authToken } from '../../JWT/tokenGenerate';
+import { authToken } from '../../JWT/tokenGenerate';
 import Usermodel from '../../database/models/User';
 
 const loginService = {
@@ -10,10 +10,10 @@ const loginService = {
     return user;
   },
 
-  // async decode(token: string) {
-  //   const user = authToken(token);
-  //   return user;
-  // },
+  async decode(token: string) {
+    const user = authToken(token);
+    return user;
+  },
 
 };
 

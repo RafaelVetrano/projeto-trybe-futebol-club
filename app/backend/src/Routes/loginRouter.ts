@@ -11,6 +11,10 @@ route.post(
   loginController.authLogin,
 );
 
-// route.get('/validation', loginController.getUserRole);
+route.get(
+  '/validate',
+  loginValidation.verifyAuthentication,
+  loginController.getUserRole,
+);
 
 export default route;

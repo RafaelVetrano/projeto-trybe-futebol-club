@@ -1,4 +1,4 @@
-import { sign } from 'jsonwebtoken';
+import { sign, verify } from 'jsonwebtoken';
 import { config } from 'dotenv';
 
 config();
@@ -11,12 +11,12 @@ const getToken = (email: string, password: string): string => {
   return token;
 };
 
-// const authToken = (token: string) => {
-//   const isTokenValid = verify(token, 'jwt_secret');
-//   return isTokenValid;
-// };
+const authToken = (token: string) => {
+  const isTokenValid = verify(token, 'jwt_secret');
+  return isTokenValid;
+};
 
 export default getToken;
-// export {
-//   authToken,
-// };
+export {
+  authToken,
+};
