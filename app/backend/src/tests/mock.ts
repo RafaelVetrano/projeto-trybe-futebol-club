@@ -1,9 +1,9 @@
-export const fakeUser = {
-    username: "dawdawd",
-    role: "wadawdawda",
-    email: "rafaelcairo@hotmail.com",
-    password: "1234567890",
-  };
+  export const fakeUser = {
+      username: "dawdawd",
+      role: "wadawdawda",
+      email: "rafaelcairo@hotmail.com",
+      password: "1234567890",
+    };
   
   export const trueUser  = {
     username: "Admin",
@@ -21,3 +21,7 @@ export const fakeUser = {
       email: 'fakeemail@hotmail.com',
       password: "senhanaosecreta",
   }
+
+  export const fakeToken = 'mmdawmdmadmawdmalwdmalkdawkdmapwdmapwomd'
+
+  export const trueToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInBhc3N3b3JkIjoiQWRtaW4iLCJpYXQiOjE2NjY4MDg2MTAsImV4cCI6MTc1MzEyMjIxMH0.a1HoTfKrDMeVHo-EyyMpueOk6UQ0zJBcIVqXWp8SWoY'

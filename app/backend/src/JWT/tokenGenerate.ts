@@ -1,7 +1,4 @@
-import { sign, verify } from 'jsonwebtoken';
-import { config } from 'dotenv';
-
-config();
+import { sign } from 'jsonwebtoken';
 
 const getToken = (email: string, password: string): string => {
   const token = sign({ email, password }, 'jwt_secret', {
@@ -11,12 +8,12 @@ const getToken = (email: string, password: string): string => {
   return token;
 };
 
-const authToken = (token: string) => {
-  const isTokenValid = verify(token, 'jwt_secret');
-  return isTokenValid;
-};
+// const authToken = (token: string): JwtPayload | string => {
+//   const isTokenValid = verify(token, 'jwt_secret');
+//   return isTokenValid;
+// };
 
 export default getToken;
-export {
-  authToken,
-};
+// export {
+//   authToken,
+// };

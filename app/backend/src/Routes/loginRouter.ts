@@ -13,7 +13,6 @@ route.post(
 
 route.get(
   '/validate',
-  loginValidation.verifyAuthentication,
   loginController.getUserRole,
 );
 
