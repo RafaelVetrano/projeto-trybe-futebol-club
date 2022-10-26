@@ -24,16 +24,6 @@ const loginValidation = {
       next();
     }
   },
-
-  async verifyAuthentication(req: Request, res: Response, next: NextFunction) {
-    const token = req.header('Authorization');
-    if (token === '') {
-      res.status(404).json({ message: 'token missing or expired' });
-    } else {
-      next();
-    }
-  },
-
 };
 
 export default loginValidation;
