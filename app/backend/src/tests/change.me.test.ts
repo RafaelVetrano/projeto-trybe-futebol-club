@@ -76,6 +76,7 @@ describe('testando funcoes', async () => {
     const func:JwtPayload | string = loginService.decode(trueToken);
 
    expect(func).to.equal({
+     
     email: "admin@admin.com",
     exp: 1753122210,
     iat: 1666808610,
