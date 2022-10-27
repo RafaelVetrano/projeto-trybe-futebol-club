@@ -15,24 +15,23 @@ const loginController = {
   },
 
   async getUserRole(req: Request, res: Response) {
-    try {
-      const tokenH = req.header('Authorization');
-      if (!tokenH || tokenH === '') {
-        return res.status(401).json({ message: 'token not found' });
-      }
-      const payLoad = await loginService.decode(tokenH) as JwtPayload;
-
-      const { email } = payLoad;
-
-      const user = await Usermodel.findOne({
-        where: { email },
-      });
-      return res.status(200).json({ role: user?.role });
-    } catch (error) {
-      if (error instanceof Error) {
-        res.status(500).json({ message: error.message });
-      }
+    const tokenH = req.header('Authorization');
+    if (!tokenH || tokenH === '') {
+      return res.status(401).json({ message: 'token not found' });
     }
+    const payLoad = await loginService.decode(tokenH) as JwtPayload;
+
+    const { email } = payLoad;
+
+    const user = await Usermodel.findOne({
+      where: { email },
+    });
+    return res.status(200).json({ role: user?.role });
+    // } catch (error) {
+    //   if (error instanceof Error) {
+    //     res.status(500).json({ message: error.message });
+    //   }
+    // }
   },
 
 };
