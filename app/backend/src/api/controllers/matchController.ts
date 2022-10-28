@@ -15,6 +15,29 @@ const matchController = {
     return res.status(200).json(matchs);
   },
 
+  async criarMatch(req: Request, res:Response) {
+    try {
+      const payLoad = req.body;
+      if (payLoad.homeTeam === payLoad.awayTeam) {
+        return res.status(422).json(
+          { message: 'It is not possible to create a match with two equal teams' },
+        );
+      }
+      const matchs = await matchService.create(payLoad);
+      res.status(201).json(matchs);
+    } catch (e) {
+      if (e instanceof Error) {
+        res.status(500).json(e);
+      }
+    }
+  },
+
+  async updateMatch(req: Request, res:Response) {
+    const { id } = req.params;
+    await matchService.update(id);
+    return res.status(200).json({ message: 'finished' });
+  },
+
 };
 
 export default matchController;
