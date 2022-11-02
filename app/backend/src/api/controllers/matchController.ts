@@ -26,9 +26,7 @@ const matchController = {
       const matchs = await matchService.create(payLoad);
       res.status(201).json(matchs);
     } catch (e) {
-      if (e instanceof Error) {
-        res.status(500).json(e);
-      }
+      res.status(500).json(e);
     }
   },
 

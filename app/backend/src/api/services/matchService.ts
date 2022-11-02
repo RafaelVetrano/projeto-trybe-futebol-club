@@ -20,14 +20,14 @@ const matchService = {
     return matchs;
   },
 
-  async getById(id: string) {
-    const match = await MatchModel.findOne(
-      {
-        where: { id },
-      },
-    );
-    return match;
-  },
+  // async getById(id: string) {
+  //   const match = await MatchModel.findOne(
+  //     {
+  //       where: { id },
+  //     },
+  //   );
+  //   return match;
+  // },
 
   async getMatchInprogress(progress: boolean) {
     const matchs = await MatchModel.findAll({
