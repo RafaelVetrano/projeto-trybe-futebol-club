@@ -1,3 +1,4 @@
+import { verify } from 'jsonwebtoken';
 import MatchModel from '../../database/models/Match';
 import TeamModel from '../../database/models/Team';
 import MatchBody from '../interfaces/matchBodyInterface';
@@ -63,6 +64,11 @@ const matchService = {
       { inProgress: false },
       { where: { id } },
     );
+  },
+
+  async decode(token: string) {
+    const payload = verify(token, 'jwt_secret');
+    return payload;
   },
 
 };
