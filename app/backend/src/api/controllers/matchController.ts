@@ -36,6 +36,18 @@ const matchController = {
     return res.status(200).json({ message: 'finished' });
   },
 
+  async updateMatchGoals(req: Request, res:Response) {
+    try {
+      const { id } = req.params;
+      const { body } = req;
+
+      await matchService.updateGoals(id, body);
+      res.status(200).json({ message: 'Updated' });
+    } catch (e) {
+      res.status(500).json(e);
+    }
+  },
+
 };
 
 export default matchController;

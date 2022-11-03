@@ -10,5 +10,6 @@ route.patch(
   '/:id/finish',
   matchController.updateMatch,
 );
+route.patch('/:id', matchController.updateMatchGoals);
 
 export default route;

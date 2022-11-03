@@ -1,7 +1,8 @@
 import { verify } from 'jsonwebtoken';
 import MatchModel from '../../database/models/Match';
 import TeamModel from '../../database/models/Team';
-import MatchBody from '../interfaces/matchBodyInterface';
+import MatchBody from '../interfaces/MatchBodyInterface';
+import PayloadGoals from '../interfaces/PayloadGoalsInterface';
 
 const matchService = {
   async getAllMatches() {
@@ -20,14 +21,14 @@ const matchService = {
     return matchs;
   },
 
-  // async getById(id: string) {
-  //   const match = await MatchModel.findOne(
-  //     {
-  //       where: { id },
-  //     },
-  //   );
-  //   return match;
-  // },
+  async getById(id: string) {
+    const match = await MatchModel.findOne(
+      {
+        where: { id },
+      },
+    );
+    return match;
+  },
 
   async getMatchInprogress(progress: boolean) {
     const matchs = await MatchModel.findAll({
@@ -62,6 +63,16 @@ const matchService = {
   async update(id: string) {
     await MatchModel.update(
       { inProgress: false },
+      { where: { id } },
+    );
+  },
+
+  async updateGoals(id: string, payloadGoals: PayloadGoals) {
+    await MatchModel.update(
+      {
+        homeTeamGoals: payloadGoals.homeTeamGoals,
+        awayTeamGoals: payloadGoals.awayTeamGoals,
+      },
       { where: { id } },
     );
   },
