@@ -47,6 +47,21 @@ const matchService = {
     return matchs;
   },
 
+  // async getMatchNipByid(id: number) {
+  //   const matchsHt = (await MatchModel.findAndCountAll({
+  //     where: {
+  //       inProgress: false,
+  //       homeTeam: id,
+  //     } })).count;
+  //   const matchAt = (await MatchModel.findAndCountAll({
+  //     where: {
+  //       inProgress: false,
+  //       awayTeam: id,
+  //     } })).count;
+  //   const totalMatchs = matchAt + matchsHt;
+  //   return totalMatchs;
+  // },
+
   async create(payLoad: MatchBody) {
     const newMatch = await MatchModel.create(
       {

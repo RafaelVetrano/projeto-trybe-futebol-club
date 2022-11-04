@@ -6,7 +6,7 @@ const teamService = {
     return teams;
   },
 
-  async getTeamById(id: string) {
+  async getTeamById(id: string | number) {
     const team = TeamModel.findOne({
       where: { id },
     });
